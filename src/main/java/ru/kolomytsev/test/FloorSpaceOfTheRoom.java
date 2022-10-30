@@ -39,68 +39,43 @@ import java.util.Scanner;
 //Пример вывода 3:
 //6,0
 public class FloorSpaceOfTheRoom {
+    public static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
         System.out.println("Введите тип фигуры:");
+
         try {
             switch (userInput2()) {
-                        case "ТРЕУГОЛЬНИК" -> {
-                            double a = userInput();
-                            double b = userInput();
-                            double c = userInput();
-                            double p = (a + b + c) / 2;
-                            double s = Math.sqrt(p * (p - a) * (p - b) * (p - c));
-                            String result = String.format("%.1f", s);
-                            System.out.println(result);
-                        }
-                        case "ПРЯМОУГОЛЬНИК" -> {
-                            double as = userInput();
-                            double bs = userInput();
-                            double ss = (as * bs);
-                            String result = String.format("%.1f", ss);
-                            System.out.println(result);
-                        }
-                        case "КРУГ" -> {
-                            double r = userInput();
-                            double pi = 3.14;
-                            float si = (float) (pi * r * r);
-                            String result = String.format("%.1f", si);
-                            System.out.println(result);
-                        }
-                    }
-            } catch (NumberFormatException e) {
-                System.out.println("Неверный ввод!");
+                case "ТРЕУГОЛЬНИК":
+                    double a = userInput();
+                    double b = userInput();
+                    double c = userInput();
+                    double p = (a + b + c) / 2;
+                    double s = Math.sqrt(p * (p - a) * (p - b) * (p - c));
+                    System.out.println(s);
+                    break;
+                case "ПРЯМОУГОЛЬНИК":
+                    double as = userInput();
+                    double bs = userInput();
+                    double ss = (as * bs);
+                    System.out.println(ss);
+                    break;
+                case "КРУГ":
+                    double r = userInput();
+                    double pi = 3.14;
+                    double si = pi * r * r;
+                    System.out.println(si);
+                    break;
             }
+        } catch (NumberFormatException e) {
+            System.out.println("Неверный ввод!");
+        }
     }
-//    private static void triangle() {
-//        double a= userInput();
-//        double b= userInput();
-//        double c= userInput();
-//        double p = (a + b + c)/2;
-//        float s = (float) Math.sqrt(p*(p-a)*(p-b)*(p-c));
-//        String result = String.format("%.1f",s);
-//        System.out.println(result);
-//    }
-//    private static void rectangle() {
-//        double a= userInput();
-//        double b= userInput();
-//        float s = (float) (a * b);
-//        String result = String.format("%.1f",s);
-//        System.out.println(result);
-//    }
-//    private static void circle() {
-//        double r = userInput();
-//        double p = 3.14;
-//        float s = (float) (p * r * r);
-//        String result = String.format("%.1f",s);
-//        System.out.println(result);
-//    }
-
     private static double userInput() {
-        Scanner sc = new Scanner(System.in);
+        //Scanner sc = new Scanner(System.in);
         double i;
         while (true) {
             try {
-                i = Double.parseDouble(sc.next());
+                i = Double.parseDouble(sc.nextLine());
                 break;
             } catch (NumberFormatException e) {
                 System.out.println("Неверный ввод!");
@@ -110,15 +85,22 @@ public class FloorSpaceOfTheRoom {
     }
 
     private static String userInput2() {
-        Scanner sc = new Scanner(System.in);
+        //Scanner sc = new Scanner(System.in);
         String z;
+        label:
         while (true) {
             try {
-                z = sc.next().toUpperCase();
-                if (z.equals("КРУГ")){
-                    break;
-                }else {
-                    System.out.println("Неверный ввод!");
+                z = sc.nextLine().toUpperCase();
+                switch (z) {
+                    case "КРУГ":
+                        break label;
+                    case "ТРЕУГОЛЬНИК":
+                        break label;
+                    case "ПРЯМОУГОЛЬНИК":
+                        break label;
+                    default:
+                        System.out.println("Неверный ввод!");
+                        break;
                 }
 
             } catch (NumberFormatException e) {

@@ -1,28 +1,28 @@
 package ru.kolomytsev.test;
 
 import java.util.Scanner;
+//Улитка ползет вверх по вертикальному столбу высотой H футов. За день он поднимается на A футов,
+// а за ночь опускается на B футов. В какой день улитка достигнет вершины шеста?
+//Формат входных данных
+//На вход программа получает неотрицательные целые числа H, A, B, где H > B и A > B. Каждое целое число не превосходит 100.
 
 public class Snail2 {
-    public static void main(String[] args) {
-        int a = userInput("Ведите H:");
-        int b = userInput("Ведите A:");
-        int c = userInput("Ведите B:");
-        //...
+    public static void main(String[] args) { // быстрый вариант
+        int H;
+        int A;
+        int B;
+        Scanner scanner = new Scanner(System.in);
 
-    }
+        H = scanner.nextInt();
+        A = scanner.nextInt();
+        B = scanner.nextInt();
 
-    private static int userInput(String message) {
-        Scanner sc = new Scanner(System.in);
-        int i;
-        while (true) {
-            System.out.print(message);
-            try {
-                i = Integer.parseInt(sc.next());
+        for (int i = 1; true; i++){
+            H= H-A+B;
+            if (H<=B){
+                System.out.println(i);
                 break;
-            } catch (NumberFormatException e) {
-                System.out.println("Неверный ввод!");
             }
         }
-        return i;
     }
 }
