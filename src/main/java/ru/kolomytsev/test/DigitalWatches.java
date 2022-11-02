@@ -1,8 +1,9 @@
 package ru.kolomytsev.test;
 
-import java.time.LocalDateTime;
-import java.time.Month;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
+import java.util.TimeZone;
 
 //Цифровые часы
 //Цифровые часы отображают время в формате ч:мм:сс (от 0:00:00 до 23:59:59),
@@ -24,12 +25,16 @@ public class DigitalWatches {
     public static void main(String[] args) {
         System.out.println("Введите количество секунд");
         int a = userInput();
-        while (a > 0 && a <= 10000000){
-
+        while (a > 0 || a <= 10000000){
+            SimpleDateFormat formater = new SimpleDateFormat("H:mm:ss");
+            //formater.setTimeZone(TimeZone.getTimeZone("GMT"));
+            Date date = new Date(userInput()* 1000L);
+            System.out.println(formater.format(date));
+            break;
         }
+
     }
     private static int userInput() {
-        //Scanner sc = new Scanner(System.in);
         int i;
         while (true) {
             try {
