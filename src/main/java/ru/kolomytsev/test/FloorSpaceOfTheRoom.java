@@ -67,7 +67,7 @@ public class FloorSpaceOfTheRoom {
                     break;
             }
         } catch (NumberFormatException e) {
-            System.out.println("Неверный ввод!");
+            System.out.println("Неверный ввод фигуры!");
         }
     }
     private static double userInput() {

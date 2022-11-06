@@ -38,6 +38,7 @@ public class DigitalWatches {
         int i;
         while (true) {
             try {
+                //String input = scanner.nextLine();
                 i = Integer.parseInt(scanner.nextLine());
                 break;
             } catch (NumberFormatException e) {
